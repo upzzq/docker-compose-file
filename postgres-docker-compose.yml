@@ -1,0 +1,15 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:9.6.23
+    container_name: postgres
+    restart: always
+    volumes:
+      - /usr/local/soft/postgres/postgresql:/var/lib/postgresql
+      - /usr/local/soft/postgres/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=123456
+      - COMPOSE_PROJECT_NAME:postgres-server
+    ports: 
+     - 5432:5432

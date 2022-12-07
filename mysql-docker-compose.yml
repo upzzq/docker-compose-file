@@ -1,0 +1,28 @@
+version : '3'
+services:
+  xbd-mysql:
+    container_name: xbd-mysql
+    restart: always
+    image: mysql:8.0.22
+    ports:
+      - "3306:3306"
+    volumes:
+       # 挂挂载配置文件
+       #  - ./mysql/db/:/docker-entrypoint-initdb.d
+      # 挂挂载配置文件
+      - /usr/local/soft/mysql/conf/my.cnf:/etc/mysql/my.cnf
+      # 挂载日志
+      - /usr/local/soft/mysql/logs:/logs
+      # 挂载数据
+      - /usr/local/soft/mysql/data:/var/lib/mysql
+    command: [
+          'mysqld',
+          '--innodb-buffer-pool-size=80M',
+          '--character-set-server=utf8mb4',
+          '--collation-server=utf8mb4_unicode_ci',
+          '--default-time-zone=+8:00',
+          '--lower-case-table-names=1'
+        ]
+    environment:
+      # root 密码
+      MYSQL_ROOT_PASSWORD: 123456
