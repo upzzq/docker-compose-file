@@ -9,7 +9,7 @@ docker-compose -f [文件名] -p 项目名 up -d
 docker-compose -f redis-docker-compose.yml -p redis-server up -d
 ```
 
-加 -p 命令是为了执行多个docker-compose文件时，指定项目名区分每份文件，否则会报错
+加 -p 命令是为了执行多个docker-compose文件时，指定项目名，否则会报错
 
 停止并删除镜像
 ```shell
