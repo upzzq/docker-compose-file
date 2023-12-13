@@ -8,8 +8,8 @@ services:
       - /usr/local/soft/postgres/postgresql:/var/lib/postgresql
       - /usr/local/soft/postgres/data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=123456
-      - COMPOSE_PROJECT_NAME:postgres-server
+      POSTGRES_USER=root
+      POSTGRES_PASSWORD=123456
+      COMPOSE_PROJECT_NAME:postgres-server
     ports: 
      - 5432:5432
