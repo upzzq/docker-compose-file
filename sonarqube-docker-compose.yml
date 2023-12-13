@@ -9,9 +9,9 @@ services:
       - /usr/local/soft/sonarqube/data:/opt/sonarqube/data
       - /usr/local/soft/sonarqube/logs:/opt/sonarqube/logs
     environment:
-      - sonar.jdbc.url=jdbc:postgresql://192.168.1.107:5432/sonar
-      - sonar.jdbc.username=sonar
-      - sonar.jdbc.password=123456
-      - COMPOSE_PROJECT_NAME:sonarqube-server
+      sonar.jdbc.url=jdbc:postgresql://192.168.1.107:5432/sonar
+      sonar.jdbc.username=sonar
+      sonar.jdbc.password=123456
+      COMPOSE_PROJECT_NAME:sonarqube-server
     ports: 
      - 9000:9000
