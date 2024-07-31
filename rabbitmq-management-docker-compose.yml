@@ -1,16 +1,18 @@
 version: '3'
 services:
   rabbitmq:
-    image: rabbitmq:3.8.3-management
-    container_name: rabbitmq
+    image: rabbitmq:3.11.27-management
+    container_name: xbd-rabbitmq
+    hostname: rabbitserver
     restart: always
-    hostname: myRabbitmq
-    ports:
-      - 15672:15672
-      - 5672:5672
     volumes:
-      - ./data:/var/lib/rabbitmq
+      - /usr/local/soft/rabbitmq:/var/lib/rabbitmq
+      - /usr/local/soft/rabbitmq/myplugins:/myplugins
     environment:
-      RABBITMQ_DEFAULT_USER=root
-      RABBITMQ_DEFAULT_PASS=root
-
+      RABBITMQ_DEFAULT_USER: testAdmin
+      RABBITMQ_DEFAULT_PASS: yqfjaMeljwqNDO69ORgH7n4aEyk3Gwls
+      # 指定自定义插件目录
+      RABBITMQ_PLUGINS_DIR: '/plugins:/myplugins'
+    ports: 
+     - 6672:5672
+     - 15672:15672
