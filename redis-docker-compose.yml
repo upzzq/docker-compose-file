@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  redis:
+    image: reids
+    container_name: reids
+    command: redis-server /etc/redis/redis.conf --requirepass 123456 --maxmemory 521mb
+    restart: always
+    privileged: true
+    volumes:
+      - /usr/local/soft/docker/redis/conf/redis.conf:/etc/redis/redis.conf
+      - /usr/local/docker/docker/redis/data:/data
+    ports:
+      - 6379:6379
+    environment:
+      TZ: Asia/Shanghai
