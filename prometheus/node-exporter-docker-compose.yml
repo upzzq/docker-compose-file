@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  node_exporter:
+    image: prom/node-exporter:v1.5.0
+    container_name: node-exporter
+    restart: always
+    network_mode: "host"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command: 
+      - '--web.listen-address=:9100'
+      - '--path.procfs=/host/proc' 
+      - '--path.sysfs=/host/sys'
+      - "--path.rootfs=/rootfs"
+      - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc|rootfs/var/lib/docker)($$|/)'

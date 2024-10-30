@@ -1,0 +1,14 @@
+version: '3.3'
+services:  
+  grafana:
+    image: grafana/grafana:9.4.3
+    container_name: grafana
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /usr/local/soft/prometheus/grafana/grafana_data:/var/lib/grafana
+      - /usr/local/soft/prometheus/grafana/provisioning/:/etc/grafana/provisioning/
+    env_file:
+      - ./grafana/config.monitoring
+    ports:
+      - 3000:3000
